@@ -3,7 +3,7 @@ from threading import Thread, Event
 class Timer(Thread):
     """Call a function after a specified number of seconds:
 
-    t = TimerReset(30.0, f, args=[], kwargs={})
+    t = Timer(30.0, f, args=[], kwargs={})
     t.start() - to start the timer
     t.reset() - to reset the timer
     t.cancel() # stop the timer's action if it's still waiting
@@ -34,6 +34,8 @@ class Timer(Thread):
     def reset(self, interval=None):
         """ Reset the timer """
         if interval:
+            if not isinstance(interval, (int, float, complex)) and isinstance(interval, bool):
+                raise TypeError("""'interval' must a number.""")
             self.interval = interval
 
         self.resetted = True

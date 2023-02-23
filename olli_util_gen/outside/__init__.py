@@ -1,1 +1,1 @@
-from olli_util_gen.outside.timer_thread import Timer
+from olli_util_gen.outside.timer_thread import *
